@@ -1,3 +1,4 @@
+live-server --no-browser --entry-file=index.html
  
  mkdir version_00
  cd version_00
