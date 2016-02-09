@@ -1,15 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-//import $ from 'jquery'
 import Uuid from 'node-uuid'
-import {Button,Image,Alert,Badge,Input,Label } from 'react-bootstrap'
+import {Button,Image,Alert,Badge,Input,Label,Row,Col } from 'react-bootstrap'
 
 
 var t;
 var data;
 var chatID
 var request
-//var phone
 
 class Chat extends React.Component {
 	
@@ -32,9 +30,15 @@ class Chat extends React.Component {
 	  }
 	loadajax(url) {
 
+		let hostname = location.hostname
+		
+		if (hostname =='127.0.0.1') {
+			hostname='www.test.com'
+		}
 		
 		request = new XMLHttpRequest();
-		request.open('GET', 'http://www.paljaat.fi:8000/chat/'+url, true);
+//		request.open('GET', 'http://www.paljaat.fi:8000/chat/'+url, true);
+		request.open('GET', 'http://'+hostname+':8000/chat/'+url, true);
 
 		request.onload = function() {
 		  if (request.status >= 200 && request.status < 400) {
@@ -149,7 +153,7 @@ class Chat extends React.Component {
 	
 	componentWillUnmount(){
 		
-		console.log("componentWillUnmount Chat",request)
+//		console.log("componentWillUnmount Chat",request)
 //		request.abort()
 		this. timerOff()
 		
@@ -157,15 +161,13 @@ class Chat extends React.Component {
 		
 	 handleSubmit(e) {
 		 if (this.state.nextask.length > 0) {
-		 e.preventDefault();
-		 console.log(this.state.nextask)
-		 this.state.ask = this.state.nextask.trim()
-		 this.state.nextask =''
-		 ReactDOM.findDOMNode(this.refs.answer).style.display ='none'
-		 this.timerOn()
-		 let url =chatID+'/'+data.Phone+'/'+encodeURIComponent(this.state.ask)
-//		 console.log(url)
-		 this.loadajax(encodeURIComponent(url))
+			 e.preventDefault();
+			 this.state.ask = this.state.nextask.trim()
+			 this.state.nextask =''
+			 ReactDOM.findDOMNode(this.refs.answer).style.display ='none'
+			 this.timerOn()
+			 let url =chatID+'/'+data.Phone+'/'+encodeURIComponent(this.state.ask)
+			 this.loadajax(encodeURIComponent(url))
 		 }
 	 }
 	
@@ -196,25 +198,42 @@ class Chat extends React.Component {
 			 
 			 status = 'typing'			 
 		 }
-		 	 		 
+		 
+//		 var imglink = "http://www.paljaat.fi:8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
+		  let hostname = location.hostname
+			
+			if (hostname =='127.0.0.1') {
+				hostname='www.test.com'
+			}
+		  var imglink ="http://"+hostname+":8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
 		 return (
 		
 			<div>
+	 			<Row>
+	 				<Col xs={6} md={4}>
+					<Label bsStyle="danger" bsClass="mbigphone"><span className="glyphicon glyphicon-earphone" aria-hidden="true"></span> {data.Phone}</Label>
+										
+					<Image className="media-object boxImageSmall" src={imglink}  thumbnail><p className='chatunderphoto'>{data.Name} {data.Age}v </p><p>{data.City}</p></Image>
+	 					 				
+	 				</Col>
+	 				<Col xs={12} md={8} >
+	 					<Badge ref='label_typing' >{status}</Badge>
+	 					<Alert>{ask}</Alert>
+					
+	 					<div ref='answer'> 
+	 						<Alert bsStyle="danger">{answer}</Alert>
+	 						<form onSubmit={this.handleSubmit}>
+	 							<Input type="text" label="------------" placeholder="Kysyä jotain!" value={this.state.nextask} onChange={this.handleNextAskChange}/>
+	 						</form>
+	 						<Button bsStyle="primary" onClick={this.handleSubmit}>Jatkaa</Button>	
+	 					</div>
+	 				
+	 				
+	 				</Col>
+	 			</Row>
 			
-				<Label bsStyle="danger" bsClass="mbigphone"><span className="glyphicon glyphicon-earphone" aria-hidden="true"></span> {data.Phone}</Label>
-				Chatti: {data.Name} {data.Age}v 
-				<Badge ref='label_typing' pullRight>{status}</Badge>
-			
-				<p></p>						
-			    			   
-				<Alert>{ask}</Alert> 
-				<div ref='answer'> 
-					<Alert bsStyle="danger">{answer}</Alert>
-					<form onSubmit={this.handleSubmit}>
-					<Input type="text" label="Name" placeholder="Kysyä jotain!" value={this.state.nextask} onChange={this.handleNextAskChange}/>
-				</form>
-				<Button bsStyle="primary" onClick={this.handleSubmit}>Jatkaa</Button>	
-				</div>
+		
+
 			</div>		 
 		 )
 	 }

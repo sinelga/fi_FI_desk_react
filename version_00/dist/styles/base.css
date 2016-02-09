@@ -64,3 +64,9 @@ body {
 	
 	/*width: 50%;*/
 }
+.chatunderphoto {
+	 font-size: 150%;
+ 	 text-shadow: 2px 2px 2px #aaa;
+ 	color: red; 
+	
+}

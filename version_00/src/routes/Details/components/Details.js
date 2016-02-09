@@ -18,9 +18,11 @@ class Details extends React.Component {
 	    this.handleToggleDetailsChat=this.handleToggleDetailsChat.bind(this)
 	  }
 	
+
+	
 	loadajax(id) {
 
-		var hostname = location.hostname
+		let hostname = location.hostname
 		
 		if (hostname =='127.0.0.1') {
 			hostname='www.test.com'
@@ -106,7 +108,13 @@ class Details extends React.Component {
   render() {
 
 	  var data = this.state.data
-	  var imglink = "http://www.paljaat.fi:8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
+//	  var imglink = "http://www.paljaat.fi:8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
+	  let hostname = location.hostname
+		
+		if (hostname =='127.0.0.1') {
+			hostname='www.test.com'
+		}
+	  var imglink ="http://"+hostname+":8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
 	  
     return (
       <div>
