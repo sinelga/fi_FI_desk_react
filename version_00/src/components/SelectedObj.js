@@ -1,27 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router'
 import {Grid,Image,Row,Col} from 'react-bootstrap'
 
 
 class SelectedObj extends React.Component {
 	
-	constructor(props){
-	    super(props);
-//	    this.state = {
-//		    	
-//		    	dataobj: {
-//		    		
-//		    	}
-//		    	   	
-//		    }
-	
-	    	
-//	    this.state = {
-//	    	data: [],
-//	    	timerHandler: ''
-//	    	   	
-//	    }
-	   
-	  }	
+
 
   render() {
 		var hostname = location.hostname
@@ -47,9 +31,7 @@ class SelectedObj extends React.Component {
 	 
 
 	var  dataobj= this.props.data[this.props.data.length-1]
-	 console.log(dataobj);
-	 
-	 
+	 	 	 
 	 for (var property in dataobj) {
 		    		    
 		    if (property === "Id") {
@@ -63,7 +45,7 @@ class SelectedObj extends React.Component {
 		    	selected.Age = dataobj[property]
 		    }
 		    if (property === "Img_file_name") {		    
-		    	selected. Img_file_name = dataobj[property]
+		    	selected.Img_file_name = dataobj[property]
 		    }
 		    if (property === "ImgId") {		    
 		    	selected.ImgId = dataobj[property]
@@ -77,14 +59,25 @@ class SelectedObj extends React.Component {
 		    if (property === "Phone") {		    
 		    	selected.Phone= dataobj[property]
 		    }
+		    if (property === "Moto") {		    
+		    	selected.Moto= dataobj[property]
+		    }	 
 	 }
-	 
-	 
+		 
+		 var space = ' ';
+		 var arrayOfStrings = selected.Moto.split(space);
+		 var permlink = "/" +selected.Id+"/"+arrayOfStrings[0]+'_'+arrayOfStrings[1]+'.html'
+		 var imglink ="http://"+hostname+":8000/img/"+selected.ImgId+"/"+selected.Img_file_name+"/250/350"
+
+//	 <Image className="boxImageSmall" src={`http://${hostname}:8000/img/${selected.ImgId}/${selected.Img_file_name}/250/350`} thumbnail></Image>
     return (
       <div>
       <p className="mbigphone">{selected.Phone}</p>
-      <Image className="boxImageSmall" src={`http://${hostname}:8000/img/${selected.ImgId}/${selected.Img_file_name}/250/350`} thumbnail></Image>
-      <p className="transparent">{selected.Description}</p>
+    
+      <Link  to={permlink}><Image className="boxImageSmall"  src={imglink} thumbnail></Image></Link>
+      
+       		    	  
+    	  <p className="transparent">{selected.Description}</p>
     	  
        </div>
     )
