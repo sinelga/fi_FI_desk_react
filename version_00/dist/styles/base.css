@@ -1,27 +1,37 @@
 body {
-
+        
+           background: url('/img/backgroundimg.jpg') no-repeat center center fixed;
+           background-size: cover;
+           height: 100%;
+           /*color:#4d4d4d ;*/
+        
   	font-family: 'Finger Paint', cursive  !important;
 /*  	color:#ffd9d9;
   	color:#000000; */
   	text-shadow: 1px 1px 1px #aaa;
   	margin: 10px;
  /*	font-size: 170%;*/
- 	background-color: white;
+ 	/*background-color: white;*/
 }
 
 .phone {
-  font-size: 150%;
+  font-size: 210%;
   text-shadow: 2px 2px 2px #aaa;
   color: red;
   
 }
-
+.transparent {
+	
+	opacity: 0.1;
+	color:black;
+	
+}
 .bigclose{
 	font-size: 200%;
 	
 }
 .mbigphone {
-  font-size: 210%;
+  font-size: 310%;
   text-shadow: 2px 2px 2px #aaa;
   color: red;
   
@@ -38,8 +48,8 @@ body {
 	-moz-box-shadow: 7px 7px 3px #4d4d4d;
 	-webkit-box-shadow: 7px 10px 3px #4d4d4d;
 	box-shadow: 7px 7px 3px #4d4d4d;
-	margin-right: 10px;
-	float: left;
+	
+	margin: 10px;
 	
 	/*width: 50%;*/
 }

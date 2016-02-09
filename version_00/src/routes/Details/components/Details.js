@@ -19,18 +19,7 @@ class Details extends React.Component {
 	  }
 	
 	loadajax(id) {
-//		$.ajax({
-//		      url: 'http://www.paljaat.fi:8000/api/'+id,
-//		      dataType: 'json',
-//		      cache: false,
-//		      success: function(data) {
-//		        this.setState({data: data});
-//		      }.bind(this),
-//		      error: function(xhr, status, err) {
-//		        console.error(this.props.url, status, err.toString());
-//		      }.bind(this)
-//		    });
-		console.log(location.hostname)
+
 		var hostname = location.hostname
 		
 		if (hostname =='127.0.0.1') {
@@ -116,10 +105,9 @@ class Details extends React.Component {
  }
 				
   render() {
-	  
-//	  var id =this.props.params.id 
+
 	  var data = this.state.data
-	  var imglink = "http://www.paljaat.fi:8000/img/"+data.ImgId+"/"+data.Img_file_name+"/200/250"
+	  var imglink = "http://www.paljaat.fi:8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
 	  
     return (
       <div>
@@ -138,6 +126,8 @@ class Details extends React.Component {
   			<Chat data={data} timerHandler={this.state.timerHandler} />
   			
       	</div>
+  		<p className="transparent">{data.Description}</p>
+  		
       	
       </div>
     )

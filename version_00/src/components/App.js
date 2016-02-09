@@ -1,5 +1,6 @@
 import React from 'react'
 import ObjList from './ObjList'
+import {Grid} from 'react-bootstrap'
 //import $ from 'jquery'
 
 class App extends React.Component {
@@ -11,8 +12,7 @@ class App extends React.Component {
 	    }
 	    
 	  }
-		
-	
+			
 	componentWillUpdate(){
 		
 //		console.log("componentWillUpdate App ")
@@ -31,14 +31,13 @@ class App extends React.Component {
 	
 	
   render() {
-	  
-	  
-	  
+	  	  
     return (
       <div>
-      	          
+      	 
+      <Grid>
       	{this.props.children || <ObjList />} 
-        
+     </Grid>   
      </div>
     )
   }
