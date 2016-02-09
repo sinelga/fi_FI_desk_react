@@ -200,7 +200,7 @@ class Chat extends React.Component {
 		 return (
 		
 			<div>
-				<p><a className="mbigphone" href={`tel:${data.Phone}`}><span className="glyphicon glyphicon-earphone" aria-hidden="true"></span>{data.Phone}</a></p>
+			
 				<Label bsStyle="danger" bsClass="mbigphone"><span className="glyphicon glyphicon-earphone" aria-hidden="true"></span> {data.Phone}</Label>
 				Chatti: {data.Name} {data.Age}v 
 				<Badge ref='label_typing' pullRight>{status}</Badge>
