@@ -18,7 +18,7 @@ class ObjList extends React.Component {
 		
 	loadajax() {
 
-		console.log(location.hostname)
+//		console.log(location.hostname)
 		var hostname = location.hostname
 		
 		if (hostname =='127.0.0.1') {
@@ -70,10 +70,8 @@ class ObjList extends React.Component {
 			 var space = ' ';
 			 var arrayOfStrings = rentobjs[i].Moto.split(space);
 			 var permlink = "/" +rentobjs[i].Id+"/"+arrayOfStrings[0]+'_'+arrayOfStrings[1]+'.html'
-//			 images.push(<ListGroupItem><Link key={`${i}`} to={permlink}><Image className="boxImageSmall"  src={`http://${hostname}:8000/img/${rentobjs[i].ImgId}/${rentobjs[i].Img_file_name}/100/150`} thumbnail><p className='phone'>{rentobjs[i].Phone}</p><p>{rentobjs[i].Name}</p><p>{rentobjs[i].City}</p></Image></Link></ListGroupItem>)
-//			 images.push(<Link key={`${i}`} to={permlink}><Grid fluid><img className="boxImageSmall" src={`http://www.paljaat.fi:8000/img/${rentobjs[i].ImgId}/${rentobjs[i].Img_file_name}/100/150`} ><p className='phone'>{rentobjs[i].Phone}</p><p>{rentobjs[i].Name}</p><p>{rentobjs[i].City}</p></img></Grid></Link>) 	 
-//			  images.push(permlink)
-			 images.push(<Link key={`${i}`} to={permlink}><div className="media "><div className="media-left "><img className="media-object boxImageSmall" src={`http://${hostname}:8000/img/${rentobjs[i].ImgId}/${rentobjs[i].Img_file_name}/100/150`}></img></div><div className="media-body"><p className='phone'>{rentobjs[i].Phone}</p><p>{rentobjs[i].Name}</p><p>{rentobjs[i].City}</p></div></div></Link>)
+
+			 images.push(<Link key={`${i}`} to={permlink}><div className="media "><div className="media-left "><Image className="media-object boxImageSmall" src={`http://${hostname}:8000/img/${rentobjs[i].ImgId}/${rentobjs[i].Img_file_name}/100/150`} thumbnail></Image></div><div className="media-body"><p className='phone'>{rentobjs[i].Phone}</p><p>{rentobjs[i].Name}</p><p>{rentobjs[i].City}</p></div></div></Link>)
 			 
 		 }
 		
@@ -85,13 +83,10 @@ class ObjList extends React.Component {
 				 			<Col xs={6} md={4}>{images}</Col>
 				 			<Col xs={12} md={8} ><SelectedObj data={rentobjs} /></Col>
 				 		</Row>
-				 						 		
-				 	
+				 						 						 	
 		    	  </div> 
-		    	
-		    
+		    			    
 		 )
-	 	
 	 	
 	 }
 		 

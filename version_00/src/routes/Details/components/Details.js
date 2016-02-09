@@ -1,7 +1,7 @@
 import React from 'react'
 //import $ from 'jquery'
 //import { Link } from 'react-router'
-import {Button,Thumbnail,Grid,Image  } from 'react-bootstrap'
+import {Button,Thumbnail,Grid,Image,Label  } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import ReactDOM from 'react-dom'
 import Chat from './Chat'
@@ -67,7 +67,6 @@ class Details extends React.Component {
 		
 	}
 	
-	
 	handleReturn(){
 		browserHistory.push('/')
 		
@@ -116,8 +115,9 @@ class Details extends React.Component {
 		
       	<div ref='details'>
       
-      		<a className="mbigphone" href={`tel:${data.Phone}`}><span className="glyphicon glyphicon-earphone" aria-hidden="true"></span> {data.Phone}</a>
-      		<Grid><Image src={imglink} thumbnail></Image><p>{data.Name} {this.state.data.Age}v {data.City}</p><Button onClick={this.handleToggleDetailsChat} bsStyle="primary" bsSize="large" active>Chatti</Button></Grid>
+      		<Label bsStyle="danger" bsClass="mbigphone"><span className="glyphicon glyphicon-earphone" aria-hidden="true"></span> {data.Phone}</Label>
+      		
+      		<div className="media "><div className="media-left "><Image className="media-object boxImageSmall" src={imglink}  thumbnail></Image></div><div className="media-body"><p className="detailsname">{data.Name} {this.state.data.Age}v </p><p>{data.City}</p><Button onClick={this.handleToggleDetailsChat} bsStyle="primary" bsSize="large" active>Chatti</Button></div></div>   
       	</div>
       	
       	<div ref='chat'>
@@ -126,8 +126,7 @@ class Details extends React.Component {
   			
       	</div>
   		<p className="transparent">{data.Description}</p>
-  		
-      	
+  		   	
       </div>
     )
   }

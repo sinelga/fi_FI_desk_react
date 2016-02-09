@@ -83,7 +83,7 @@ class SelectedObj extends React.Component {
     return (
       <div>
       <p className="mbigphone">{selected.Phone}</p>
-      <img className="media-object boxImageSmall" src={`http://${hostname}:8000/img/${selected.ImgId}/${selected.Img_file_name}/250/350`}></img>
+      <Image className="boxImageSmall" src={`http://${hostname}:8000/img/${selected.ImgId}/${selected.Img_file_name}/250/350`} thumbnail></Image>
       <p className="transparent">{selected.Description}</p>
     	  
        </div>

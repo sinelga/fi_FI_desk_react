@@ -31,17 +31,7 @@ class Chat extends React.Component {
 
 	  }
 	loadajax(url) {
-//		xhr = $.ajax({
-//		      url: 'http://www.paljaat.fi:8000/chat/'+url,
-//		      dataType: 'json',
-//		      cache: false,
-//		      success: function(data) {
-//		        this.setState({answer: data.answer});
-//		      }.bind(this),
-//		      error: function(xhr, status, err) {
-//		        console.error(this.props.url, status, err.toString());
-//		      }.bind(this)
-//		    });
+
 		
 		request = new XMLHttpRequest();
 		request.open('GET', 'http://www.paljaat.fi:8000/chat/'+url, true);
@@ -76,7 +66,7 @@ class Chat extends React.Component {
 		 
 		 var self = this;
 		 t =setInterval(function() {
-		console.log(self.state.answer)	
+//		console.log(self.state.answer)	
 		self.setState({count: self.state.count + 1});
 			
 		}, 3500); 
@@ -96,7 +86,7 @@ class Chat extends React.Component {
 		}
 		  
 		componentWillReceiveProps(nextProps){
-			console.log("Chat componentWillReceiveProps",nextProps)
+//			console.log("Chat componentWillReceiveProps",nextProps)
 						
 			data = nextProps.data
 			this.setState({ask:'Hei '+data.Name+'!'})
@@ -105,7 +95,7 @@ class Chat extends React.Component {
 				ReactDOM.findDOMNode(this.refs.answer).style.display ='none'
 				chatID =Uuid.v4()
 				let url =chatID+'/'+data.Phone+'/'+encodeURIComponent(this.state.ask)
-				console.log(url)
+//				console.log(url)
 				this.loadajax(encodeURIComponent(url))				
 				this.timerOn()
 				
@@ -118,7 +108,7 @@ class Chat extends React.Component {
 		}
 		
 		componentWillUpdate(prevProps) {
-			console.log("Chat componentWillUpdate")
+//			console.log("Chat componentWillUpdate")
 			
 			 if (this.state.count > 7 ){
 				 
@@ -142,16 +132,14 @@ class Chat extends React.Component {
 	 } 
 	
 	componentWillMount(){
-		console.log("willmount Chat")
+//		console.log("willmount Chat")
 		this.setState({nextask: ''});
 		this.setState({ask: ''});
-//		ReactDOM.findDOMNode(this.refs.answer).style.display =''
-			
 	
 	}	
 		
 	componentDidMount(){
-		console.log("didmount Chat")
+//		console.log("didmount Chat")
 		data = this.props.data
 		this.setState({ask:'Hei '+data.Name+'!'})
 		var elem = ReactDOM.findDOMNode(this.refs.answer);
@@ -176,7 +164,7 @@ class Chat extends React.Component {
 		 ReactDOM.findDOMNode(this.refs.answer).style.display ='none'
 		 this.timerOn()
 		 let url =chatID+'/'+data.Phone+'/'+encodeURIComponent(this.state.ask)
-		 console.log(url)
+//		 console.log(url)
 		 this.loadajax(encodeURIComponent(url))
 		 }
 	 }
@@ -227,9 +215,7 @@ class Chat extends React.Component {
 				</form>
 				<Button bsStyle="primary" onClick={this.handleSubmit}>Jatkaa</Button>	
 				</div>
-			</div>
-		 
-		 
+			</div>		 
 		 )
 	 }
 	 	 
