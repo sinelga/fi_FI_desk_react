@@ -111,9 +111,8 @@ class Details extends React.Component {
 	  
     return (
       <div>
-		<button onClick={this.handleReturn} type="button" className="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true" className="bigclose">&times;</span>
-		</button>
+
+		<Button onClick={this.handleReturn}  className="bigclose" bsStyle="danger" bsSize="large" active>Palata</Button>
 		
       	<div ref='details'>
       

@@ -79,9 +79,6 @@ class SelectedObj extends React.Component {
 		    }
 	 }
 	 
-	 console.log(selected.Id )
-
-	 
 	 
     return (
       <div>

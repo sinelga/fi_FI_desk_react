@@ -27,9 +27,15 @@ body {
 	
 }
 .bigclose{
-	font-size: 200%;
-	
+
+  font-size: 150%;
+  text-shadow: 2px 2px 2px #aaa;
+ 
+  float: right;
+
 }
+
+
 .mbigphone {
   font-size: 310%;
   text-shadow: 2px 2px 2px #aaa;
