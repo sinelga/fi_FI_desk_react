@@ -34,8 +34,11 @@ class Details extends React.Component {
 		    // Success!			  
 		    var data = JSON.parse(request.responseText);
 		    this.setState({data: data});
+		    console.log("data",data)
 		    
 		  } else {
+			  
+			 console.log("not found equest.status ",equest.status) 
 		    // We reached our target server, but it returned an error
 
 		  }
@@ -110,9 +113,8 @@ class Details extends React.Component {
 	  
 	  const meta = {
 		      title: data.Moto,
-		      }
+	}
 	  
-
 	  let hostname = location.hostname
 		
 		if (hostname =='127.0.0.1') {
