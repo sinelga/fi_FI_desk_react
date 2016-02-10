@@ -1,7 +1,8 @@
 import React from 'react'
 import ObjList from './ObjList'
 import {Grid} from 'react-bootstrap'
-//import $ from 'jquery'
+import DocumentMeta from 'react-document-meta'
+
 
 class App extends React.Component {
 	constructor(props){
@@ -31,10 +32,14 @@ class App extends React.Component {
 	
 	
   render() {
+	  
+	  const meta = {
+		      title: 'Sex Pillu',
+		      }
 	  	  
     return (
       <div>
-      	 
+      <DocumentMeta {...meta} />	 
       <Grid>
       	{this.props.children || <ObjList />} 
      </Grid>   

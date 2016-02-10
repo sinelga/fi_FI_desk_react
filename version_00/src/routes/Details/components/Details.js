@@ -1,9 +1,8 @@
 import React from 'react'
-//import $ from 'jquery'
-//import { Link } from 'react-router'
 import {Button,Thumbnail,Grid,Image,Label  } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import ReactDOM from 'react-dom'
+import DocumentMeta from 'react-document-meta'
 import Chat from './Chat'
 
 class Details extends React.Component {
@@ -108,7 +107,12 @@ class Details extends React.Component {
   render() {
 
 	  var data = this.state.data
-//	  var imglink = "http://www.paljaat.fi:8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
+	  
+	  const meta = {
+		      title: data.Moto,
+		      }
+	  
+
 	  let hostname = location.hostname
 		
 		if (hostname =='127.0.0.1') {
@@ -118,7 +122,7 @@ class Details extends React.Component {
 	  
     return (
       <div>
-
+      <DocumentMeta {...meta} />
 		<Button onClick={this.handleReturn}  className="bigclose" bsStyle="danger" bsSize="large" active>Palata</Button>
 		
       	<div ref='details'>

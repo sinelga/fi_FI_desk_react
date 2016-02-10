@@ -1,5 +1,4 @@
 import React from 'react'
-//import $ from 'jquery'
 import { Link } from 'react-router'
 import {Grid,Image,Row,Col,ListGroup,ListGroupItem} from 'react-bootstrap'
 import SelectedObj from './SelectedObj'
@@ -18,7 +17,6 @@ class ObjList extends React.Component {
 		
 	loadajax() {
 
-//		console.log(location.hostname)
 		var hostname = location.hostname
 		
 		if (hostname =='127.0.0.1') {
@@ -56,15 +54,13 @@ class ObjList extends React.Component {
 		
 	 render() {
 
-		 var rentobjs = this.state.data;
-//		 global.OPERATORS_OBJS =this.state.data;
-		 var images = [];
+		var rentobjs = this.state.data;
+		var images = [];
 		var hostname = location.hostname
 		if (hostname =='127.0.0.1') {
 			hostname='www.test.com'
 		}
-		 		
-		
+		 				
 		 for  (var i = 0; i <  rentobjs.length; i++) {
 			
 			 var space = ' ';
@@ -92,6 +88,4 @@ class ObjList extends React.Component {
 		 
 	 }	
 	 
-
-
 module.exports = ObjList
