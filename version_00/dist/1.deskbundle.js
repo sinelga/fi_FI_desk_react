@@ -1,1 +1,543 @@
-webpackJsonp([1],{238:function(e,t,a){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}function l(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function i(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var o,r,u,d,c=function(){function e(e,t){for(var a=0;a<t.length;a++){var n=t[a];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,a,n){return a&&e(t.prototype,a),n&&e(t,n),t}}(),f=a(1),h=n(f),m=a(15),p=n(m),y=a(170),b=n(y),v=a(49),g=function(e){function t(e){l(this,t);var a=i(this,Object.getPrototypeOf(t).call(this,e));return a.state={count:0,ask:"",nextask:"",answer:""},a.toggle=a.toggle.bind(a),a.timerOn=a.timerOn.bind(a),a.timerOff=a.timerOff.bind(a),a.handleSubmit=a.handleSubmit.bind(a),a.handleNextAskChange=a.handleNextAskChange.bind(a),a}return s(t,e),c(t,[{key:"loadajax",value:function(e){var t=location.hostname;"127.0.0.1"==t&&(t="www.test.com"),d=new XMLHttpRequest,d.open("GET","http://"+t+":8000/chat/"+e,!0),d.onload=function(){if(d.status>=200&&d.status<400){var e=JSON.parse(d.responseText);this.setState({answer:e.answer})}}.bind(this),d.onerror=function(){},d.send()}},{key:"timerOff",value:function(){clearInterval(o),o=0,this.setState({count:0})}},{key:"timerOn",value:function(){var e=this;o=setInterval(function(){e.setState({count:e.state.count+1})},3500)}},{key:"toggle",value:function(){var e=p["default"].findDOMNode(this.refs.label_typing);"hidden"===e.style.visibility?e.style.visibility="":e.style.visibility="hidden"}},{key:"componentWillReceiveProps",value:function(e){if(r=e.data,this.setState({ask:"Hei "+r.Name+"!"}),"on"===e.timerHandler){p["default"].findDOMNode(this.refs.answer).style.display="none",u=b["default"].v4();var t=u+"/"+r.Phone+"/"+encodeURIComponent(this.state.ask);this.loadajax(encodeURIComponent(t)),this.timerOn()}else console.log("STOP timeR"),this.timerOff()}},{key:"componentWillUpdate",value:function(e){this.state.count>7?(p["default"].findDOMNode(this.refs.label_typing).style.visibility="hidden",p["default"].findDOMNode(this.refs.answer).style.display="",this.timerOff()):0!==this.state.count&&this.toggle()}},{key:"componentDidUpdate",value:function(e,t){}},{key:"componentWillMount",value:function(){this.setState({nextask:""}),this.setState({ask:""})}},{key:"componentDidMount",value:function(){r=this.props.data,this.setState({ask:"Hei "+r.Name+"!"});var e=p["default"].findDOMNode(this.refs.answer);e.style.display="none"}},{key:"componentWillUnmount",value:function(){this.timerOff()}},{key:"handleSubmit",value:function(e){if(this.state.nextask.length>0){e.preventDefault(),this.state.ask=this.state.nextask.trim(),this.state.nextask="",p["default"].findDOMNode(this.refs.answer).style.display="none",this.timerOn();var t=u+"/"+r.Phone+"/"+encodeURIComponent(this.state.ask);this.loadajax(encodeURIComponent(t))}}},{key:"handleNextAskChange",value:function(e){this.setState({nextask:e.target.value})}},{key:"render",value:function(){var e=this.props.data,t="odotta",a=this.state.answer,n=this.state.ask;this.state.count>2&&(t="delivered"),this.state.count>5&&(t="seen"),this.state.count>7&&(t="typing");var l=location.hostname;"127.0.0.1"==l&&(l="www.test.com");var i="http://"+l+":8000/img/"+e.ImgId+"/"+e.Img_file_name+"/250/350";return h["default"].createElement("div",null,h["default"].createElement(v.Row,null,h["default"].createElement(v.Col,{xs:6,md:4},h["default"].createElement(v.Label,{bsStyle:"danger",bsClass:"mbigphone"},h["default"].createElement("span",{className:"glyphicon glyphicon-earphone","aria-hidden":"true"})," ",e.Phone),h["default"].createElement(v.Image,{className:"media-object boxImageSmall",src:i,thumbnail:!0},h["default"].createElement("p",{className:"chatunderphoto"},e.Name," ",e.Age,"v "),h["default"].createElement("p",null,e.City))),h["default"].createElement(v.Col,{xs:12,md:8},h["default"].createElement(v.Badge,{ref:"label_typing"},t),h["default"].createElement(v.Alert,null,n),h["default"].createElement("div",{ref:"answer"},h["default"].createElement(v.Alert,{bsStyle:"danger"},a),h["default"].createElement("form",{onSubmit:this.handleSubmit},h["default"].createElement(v.Input,{type:"text",label:"------------",placeholder:"Kysyä jotain!",value:this.state.nextask,onChange:this.handleNextAskChange})),h["default"].createElement(v.Button,{bsStyle:"primary",onClick:this.handleSubmit},"Jatkaa")))))}}]),t}(h["default"].Component);e.exports=g},239:function(e,t,a){"use strict";function n(e){return e&&e.__esModule?e:{"default":e}}function l(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function i(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function s(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}var o=function(){function e(e,t){for(var a=0;a<t.length;a++){var n=t[a];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,a,n){return a&&e(t.prototype,a),n&&e(t,n),t}}(),r=a(1),u=n(r),d=a(49),c=a(58),f=a(15),h=n(f),m=a(103),p=n(m),y=a(238),b=n(y),v=function(e){function t(e){l(this,t);var a=i(this,Object.getPrototypeOf(t).call(this,e));return a.state={data:[],timerHandler:""},a.handleToggleDetailsChat=a.handleToggleDetailsChat.bind(a),a}return s(t,e),o(t,[{key:"loadajax",value:function(e){var t=location.hostname;"127.0.0.1"==t&&(t="www.test.com");var a=new XMLHttpRequest;a.open("GET","http://"+t+":8000/api/"+e,!0),a.onload=function(){if(a.status>=200&&a.status<400){var e=JSON.parse(a.responseText);this.setState({data:e}),console.log("data",e)}else console.log("not found equest.status ",equest.status)}.bind(this),a.onerror=function(){},a.send()}},{key:"handleToggleDetailsChat",value:function(){var e=h["default"].findDOMNode(this.refs.chat).style.display;"none"===e?(this.setState({timerHandler:"on"}),h["default"].findDOMNode(this.refs.chat).style.display="",h["default"].findDOMNode(this.refs.details).style.display="none"):(this.setState({timerHandler:"off"}),h["default"].findDOMNode(this.refs.chat).style.display="none",h["default"].findDOMNode(this.refs.details).style.display="")}},{key:"handleReturn",value:function(){c.browserHistory.push("/")}},{key:"componentWillMount",value:function(){this.loadajax(this.props.params.id)}},{key:"componentDidMount",value:function(){h["default"].findDOMNode(this.refs.chat).style.display="none"}},{key:"componentWillReceiveProps",value:function(){}},{key:"componentWillUpdate",value:function(e){}},{key:"componentDidUpdate",value:function(e){}},{key:"render",value:function(){var e=this.state.data,t={title:e.Moto},a=location.hostname;"127.0.0.1"==a&&(a="www.test.com");var n="http://"+a+":8000/img/"+e.ImgId+"/"+e.Img_file_name+"/250/350";return u["default"].createElement("div",null,u["default"].createElement(p["default"],t),u["default"].createElement(d.Button,{onClick:this.handleReturn,className:"bigclose",bsStyle:"danger",bsSize:"large",active:!0},"Palata"),u["default"].createElement("div",{ref:"details"},u["default"].createElement(d.Label,{bsStyle:"danger",bsClass:"mbigphone"},u["default"].createElement("span",{className:"glyphicon glyphicon-earphone","aria-hidden":"true"})," ",e.Phone),u["default"].createElement("div",{className:"media "},u["default"].createElement("div",{className:"media-left "},u["default"].createElement(d.Image,{className:"media-object boxImageSmall",src:n,thumbnail:!0})),u["default"].createElement("div",{className:"media-body"},u["default"].createElement("p",{className:"detailsname"},e.Name," ",this.state.data.Age,"v "),u["default"].createElement("p",null,e.City),u["default"].createElement(d.Button,{onClick:this.handleToggleDetailsChat,bsStyle:"primary",bsSize:"large",active:!0},"Chatti")))),u["default"].createElement("div",{ref:"chat"},u["default"].createElement(b["default"],{data:e,timerHandler:this.state.timerHandler})),u["default"].createElement("p",{className:"transparent"},e.Description))}}]),t}(u["default"].Component);e.exports=v}});
+webpackJsonp([1],{
+
+/***/ 470:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactBootstrap = __webpack_require__(219);
+
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactDocumentMeta = __webpack_require__(462);
+
+	var _reactDocumentMeta2 = _interopRequireDefault(_reactDocumentMeta);
+
+	var _Chat = __webpack_require__(471);
+
+	var _Chat2 = _interopRequireDefault(_Chat);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Details = function (_React$Component) {
+		_inherits(Details, _React$Component);
+
+		function Details(props) {
+			_classCallCheck(this, Details);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Details).call(this, props));
+
+			_this.state = {
+				data: [],
+				timerHandler: ''
+
+			};
+			_this.handleToggleDetailsChat = _this.handleToggleDetailsChat.bind(_this);
+			return _this;
+		}
+
+		_createClass(Details, [{
+			key: 'loadajax',
+			value: function loadajax(id) {
+
+				var hostname = location.hostname;
+
+				if (hostname == '127.0.0.1') {
+					hostname = 'www.test.com';
+				}
+				var request = new XMLHttpRequest();
+				request.open('GET', 'http://' + hostname + ':8000/api/' + id, true);
+
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+						this.setState({ data: data });
+						console.log("data", data);
+					} else {
+
+						console.log("not found equest.status ", equest.status);
+						// We reached our target server, but it returned an error
+					}
+				}.bind(this);
+
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				request.send();
+			}
+		}, {
+			key: 'handleToggleDetailsChat',
+			value: function handleToggleDetailsChat() {
+
+				var dnode = _reactDom2.default.findDOMNode(this.refs.chat).style.display;
+
+				if (dnode === 'none') {
+
+					this.setState({ timerHandler: 'on' });
+					_reactDom2.default.findDOMNode(this.refs.chat).style.display = '';
+					_reactDom2.default.findDOMNode(this.refs.details).style.display = 'none';
+				} else {
+					this.setState({ timerHandler: 'off' });
+					_reactDom2.default.findDOMNode(this.refs.chat).style.display = 'none';
+					_reactDom2.default.findDOMNode(this.refs.details).style.display = '';
+				}
+			}
+		}, {
+			key: 'handleReturn',
+			value: function handleReturn() {
+				_reactRouter.browserHistory.push('/');
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log("Willmount Details",this.props.params.id)
+
+				this.loadajax(this.props.params.id);
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				//		console.log("mount Details")
+				_reactDom2.default.findDOMNode(this.refs.chat).style.display = 'none';
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps() {
+				//		console.log("componentWillReceiveProps Details")
+
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//		console.log("componentWillUpdate")	
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps) {
+
+				//		console.log("componentDidUpdate")
+
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+
+				var data = this.state.data;
+
+				var meta = {
+					title: data.Moto
+				};
+
+				var hostname = location.hostname;
+
+				if (hostname == '127.0.0.1') {
+					hostname = 'www.test.com';
+				}
+				var imglink = "http://" + hostname + ":8000/img/" + data.ImgId + "/" + data.Img_file_name + "/250/350";
+
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(_reactDocumentMeta2.default, meta),
+					_react2.default.createElement(
+						_reactBootstrap.Button,
+						{ onClick: this.handleReturn, className: 'bigclose', bsStyle: 'danger', bsSize: 'large', active: true },
+						'Palata'
+					),
+					_react2.default.createElement(
+						'div',
+						{ ref: 'details' },
+						_react2.default.createElement(
+							_reactBootstrap.Label,
+							{ bsStyle: 'danger', bsClass: 'mbigphone' },
+							_react2.default.createElement('span', { className: 'glyphicon glyphicon-earphone', 'aria-hidden': 'true' }),
+							' ',
+							data.Phone
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'media ' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'media-left ' },
+								_react2.default.createElement(_reactBootstrap.Image, { className: 'media-object boxImageSmall', src: imglink, thumbnail: true })
+							),
+							_react2.default.createElement(
+								'div',
+								{ className: 'media-body' },
+								_react2.default.createElement(
+									'p',
+									{ className: 'detailsname' },
+									data.Name,
+									' ',
+									this.state.data.Age,
+									'v '
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									data.City
+								),
+								_react2.default.createElement(
+									_reactBootstrap.Button,
+									{ onClick: this.handleToggleDetailsChat, bsStyle: 'primary', bsSize: 'large', active: true },
+									'Chatti'
+								)
+							)
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ ref: 'chat' },
+						_react2.default.createElement(_Chat2.default, { data: data, timerHandler: this.state.timerHandler })
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'transparent' },
+						data.Description
+					)
+				);
+			}
+		}]);
+
+		return Details;
+	}(_react2.default.Component);
+
+	module.exports = Details;
+
+/***/ },
+
+/***/ 471:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _nodeUuid = __webpack_require__(472);
+
+	var _nodeUuid2 = _interopRequireDefault(_nodeUuid);
+
+	var _reactBootstrap = __webpack_require__(219);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var t;
+	var data;
+	var chatID;
+	var request;
+
+	var Chat = function (_React$Component) {
+		_inherits(Chat, _React$Component);
+
+		function Chat(props) {
+			_classCallCheck(this, Chat);
+
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Chat).call(this, props));
+
+			_this.state = {
+				count: 0,
+				ask: '',
+				nextask: '',
+				answer: ''
+
+			};
+
+			_this.toggle = _this.toggle.bind(_this);
+			_this.timerOn = _this.timerOn.bind(_this);
+			_this.timerOff = _this.timerOff.bind(_this);
+			_this.handleSubmit = _this.handleSubmit.bind(_this);
+			_this.handleNextAskChange = _this.handleNextAskChange.bind(_this);
+
+			return _this;
+		}
+
+		_createClass(Chat, [{
+			key: 'loadajax',
+			value: function loadajax(url) {
+
+				var hostname = location.hostname;
+
+				if (hostname == '127.0.0.1') {
+					hostname = 'www.test.com';
+				}
+
+				request = new XMLHttpRequest();
+				//		request.open('GET', 'http://www.paljaat.fi:8000/chat/'+url, true);
+				request.open('GET', 'http://' + hostname + ':8000/chat/' + url, true);
+
+				request.onload = function () {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!			 
+						var data = JSON.parse(request.responseText);
+						//		    this.setState({data: data});
+						this.setState({ answer: data.answer });
+					} else {
+						// We reached our target server, but it returned an error
+
+					}
+				}.bind(this);
+
+				request.onerror = function () {
+					// There was a connection error of some sort
+				};
+
+				request.send();
+			}
+		}, {
+			key: 'timerOff',
+			value: function timerOff() {
+				clearInterval(t);
+				t = 0;
+				this.setState({ count: 0 });
+			}
+		}, {
+			key: 'timerOn',
+			value: function timerOn() {
+
+				var self = this;
+				t = setInterval(function () {
+					//		console.log(self.state.answer)	
+					self.setState({ count: self.state.count + 1 });
+				}, 3500);
+			}
+		}, {
+			key: 'toggle',
+			value: function toggle() {
+
+				var elem = _reactDom2.default.findDOMNode(this.refs.label_typing);
+				if (elem.style.visibility === 'hidden') {
+
+					elem.style.visibility = '';
+				} else {
+					elem.style.visibility = 'hidden';
+				}
+			}
+		}, {
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps) {
+				//			console.log("Chat componentWillReceiveProps",nextProps)
+
+				data = nextProps.data;
+				this.setState({ ask: 'Hei ' + data.Name + '!' });
+
+				if (nextProps.timerHandler === 'on') {
+					_reactDom2.default.findDOMNode(this.refs.answer).style.display = 'none';
+					chatID = _nodeUuid2.default.v4();
+					var url = chatID + '/' + data.Phone + '/' + encodeURIComponent(this.state.ask);
+					//				console.log(url)
+					this.loadajax(encodeURIComponent(url));
+					this.timerOn();
+				} else {
+					console.log("STOP timeR");
+					this.timerOff();
+				}
+			}
+		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate(prevProps) {
+				//			console.log("Chat componentWillUpdate")
+
+				if (this.state.count > 7) {
+
+					_reactDom2.default.findDOMNode(this.refs.label_typing).style.visibility = 'hidden';
+					_reactDom2.default.findDOMNode(this.refs.answer).style.display = '';
+					this.timerOff();
+				} else if (this.state.count !== 0) {
+
+					this.toggle();
+				}
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate(prevProps, prevState) {
+
+				//			console.log("Chat componentDidUpdate",prevState)
+				//			this.toggle()
+
+			}
+		}, {
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				//		console.log("willmount Chat")
+				this.setState({ nextask: '' });
+				this.setState({ ask: '' });
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				//		console.log("didmount Chat")
+				data = this.props.data;
+				this.setState({ ask: 'Hei ' + data.Name + '!' });
+				var elem = _reactDom2.default.findDOMNode(this.refs.answer);
+				elem.style.display = 'none';
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+
+				//		console.log("componentWillUnmount Chat",request)
+				//		request.abort()
+				this.timerOff();
+			}
+		}, {
+			key: 'handleSubmit',
+			value: function handleSubmit(e) {
+				if (this.state.nextask.length > 0) {
+					e.preventDefault();
+					this.state.ask = this.state.nextask.trim();
+					this.state.nextask = '';
+					_reactDom2.default.findDOMNode(this.refs.answer).style.display = 'none';
+					this.timerOn();
+					var url = chatID + '/' + data.Phone + '/' + encodeURIComponent(this.state.ask);
+					this.loadajax(encodeURIComponent(url));
+				}
+			}
+		}, {
+			key: 'handleNextAskChange',
+			value: function handleNextAskChange(e) {
+				this.setState({ nextask: e.target.value });
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var data = this.props.data;
+
+				var status = 'odotta';
+				var answer = this.state.answer;
+				var ask = this.state.ask;
+
+				if (this.state.count > 2) {
+
+					status = 'delivered';
+				}
+
+				if (this.state.count > 5) {
+
+					status = 'seen';
+				}
+
+				if (this.state.count > 7) {
+
+					status = 'typing';
+				}
+
+				//		 var imglink = "http://www.paljaat.fi:8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
+				var hostname = location.hostname;
+
+				if (hostname == '127.0.0.1') {
+					hostname = 'www.test.com';
+				}
+				var imglink = "http://" + hostname + ":8000/img/" + data.ImgId + "/" + data.Img_file_name + "/250/350";
+				return _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						_reactBootstrap.Row,
+						null,
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 6, md: 4 },
+							_react2.default.createElement(
+								_reactBootstrap.Label,
+								{ bsStyle: 'danger', bsClass: 'mbigphone' },
+								_react2.default.createElement('span', { className: 'glyphicon glyphicon-earphone', 'aria-hidden': 'true' }),
+								' ',
+								data.Phone
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Image,
+								{ className: 'media-object boxImageSmall', src: imglink, thumbnail: true },
+								_react2.default.createElement(
+									'p',
+									{ className: 'chatunderphoto' },
+									data.Name,
+									' ',
+									data.Age,
+									'v '
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									data.City
+								)
+							)
+						),
+						_react2.default.createElement(
+							_reactBootstrap.Col,
+							{ xs: 12, md: 8 },
+							_react2.default.createElement(
+								_reactBootstrap.Badge,
+								{ ref: 'label_typing' },
+								status
+							),
+							_react2.default.createElement(
+								_reactBootstrap.Alert,
+								null,
+								ask
+							),
+							_react2.default.createElement(
+								'div',
+								{ ref: 'answer' },
+								_react2.default.createElement(
+									_reactBootstrap.Alert,
+									{ bsStyle: 'danger' },
+									answer
+								),
+								_react2.default.createElement(
+									'form',
+									{ onSubmit: this.handleSubmit },
+									_react2.default.createElement(_reactBootstrap.Input, { type: 'text', label: '------------', placeholder: 'Kysyä jotain!', value: this.state.nextask, onChange: this.handleNextAskChange })
+								),
+								_react2.default.createElement(
+									_reactBootstrap.Button,
+									{ bsStyle: 'primary', onClick: this.handleSubmit },
+									'Jatkaa'
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+
+		return Chat;
+	}(_react2.default.Component);
+
+	module.exports = Chat;
+
+/***/ }
+
+});
