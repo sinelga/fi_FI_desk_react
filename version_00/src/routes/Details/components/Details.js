@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button,Thumbnail,Grid,Image,Label  } from 'react-bootstrap'
+import {Button,Thumbnail,Grid,Image,Label,Modal  } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import ReactDOM from 'react-dom'
 import DocumentMeta from 'react-document-meta'
@@ -11,10 +11,11 @@ class Details extends React.Component {
 	    super(props);
 	    this.state = {
 	    	data: [],
-	    	timerHandler: ''
-	    	   	
+	    	timerHandler: '',
+	    		showModal: false 	
 	    }
 	    this.handleToggleDetailsChat=this.handleToggleDetailsChat.bind(this)
+	     this.handleModal=this.handleModal.bind(this)
 	  }
 	
 
@@ -76,6 +77,18 @@ class Details extends React.Component {
 		
 	}
 	
+	handleModal() {
+		
+		if (this.state.showModal) {
+			this.setState({ showModal: false })
+		} else {
+			
+			this.setState({ showModal: true })
+			
+		}
+		
+	}
+	
 	componentWillMount(){
 //		console.log("Willmount Details",this.props.params.id)
 		
@@ -121,6 +134,8 @@ class Details extends React.Component {
 			hostname='www.test.com'
 		}
 	  var imglink ="http://"+hostname+":8000/img/"+data.ImgId+"/"+data.Img_file_name+"/250/350"
+	  var fullimagelink = "http://"+hostname+":8000/fullimage/"+data.ImgId+"/original/"+data.Img_file_name
+//	  <img src={fullimagelink} style={{width: 100+`%`}}  />         
 	  
     return (
       <div>
@@ -131,7 +146,7 @@ class Details extends React.Component {
       
       		<Label bsStyle="danger" bsClass="mbigphone"><span className="glyphicon glyphicon-earphone" aria-hidden="true"></span> {data.Phone}</Label>
       		
-      		<div className="media "><div className="media-left "><Image className="media-object boxImageSmall" src={imglink}  thumbnail></Image></div><div className="media-body"><p className="detailsname">{data.Name} {this.state.data.Age}v </p><p>{data.City}</p><Button onClick={this.handleToggleDetailsChat} bsStyle="primary" bsSize="large" active>Chatti</Button></div></div>   
+      		<div className="media "><div className="media-left "><Image onClick={this.handleModal} className="media-object boxImageSmall" src={imglink}  thumbnail></Image></div><div className="media-body"><p className="detailsname">{data.Name} {this.state.data.Age}v </p><p>{data.City}</p><Button onClick={this.handleToggleDetailsChat} bsStyle="primary" bsSize="large" active>Chatti</Button></div></div>   
       	</div>
       	
       	<div ref='chat'>
@@ -140,6 +155,27 @@ class Details extends React.Component {
   			
       	</div>
   		<p className="transparent">{data.Description}</p>
+  		
+        <Modal show={this.state.showModal} onHide={this.close}> 
+        
+        <Modal.Header>
+        	<Button className='pull-right' onClick={this.handleModal}>Close</Button>
+        	
+          <Modal.Title>{data.Name} {data.Age}v {data.City}</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+                 		
+        <Image src={fullimagelink}  responsive  thumbnail/>              
+        </Modal.Body>
+
+        <Modal.Footer>
+        
+        </Modal.Footer>
+
+      
+      </Modal>
+  		  		
   		   	
       </div>
     )
